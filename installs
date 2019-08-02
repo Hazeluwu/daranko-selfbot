@@ -1,0 +1,31 @@
+#!/bin/bash
+apt-get update
+apt-get install openssl -y || apt-get install openssl-dev apt -y
+apt-get install libssl -y || apt-get install libssl-dev -y
+apt-get install make -y
+apt-get install gcc -y
+apt-get install apache -y || apt-get install apache2 -y
+apt-get install zlib1g || apt-get install zlib1g-dev
+apt-get install wget -y
+apt-get install curl -y
+apt-get install zip -y
+apt-get install php -y
+apt-get install unicode -y
+apt-get install ttf-ancient -y; apt-get install ttf-ancient-fonts; apt-get install fonts-noto
+apt-get install php-pear php-dev php-zip php-curl php-gd php-mysql php-mcrypt php-xml libapache2-mod-php -y
+wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7.tgz
+tar xf Python-3.6.7.tgz
+cd Python-3.6.7/
+./configure
+make -j 4
+make altinstall
+pip3.6 install install discord.py==0.16.12 --user || pip3.6 install -U install discord.py==0.16.12
+pip3.6 install datetime --user || pip3.6 install -U datetime
+pip3.6 install asyncio --user || pip3.6 install -U asyncio
+pip3.6 install requests --user || pip3.6 install -U requests
+pip3.6 install discord.py || pip3.6 install -U discord.py
+pip3.6 install datetime || pip3.6 install -U datetime
+pip3.6 install asyncio || pip3.6 install -U asyncio
+pip3.6 install requests || pip3.6 install -U requests
+cp -R panel/ /var/www/html/
+nano /var/www/html/panel/login.php
