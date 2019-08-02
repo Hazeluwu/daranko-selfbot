@@ -29,9 +29,9 @@ def Writer():
             os.system("free -h | awk '{print $1, $2, $3, $4,  $5, $6, $7, $8}' >> tmp/tmp.txt")
             os.system("ps aux | grep %s | awk '{sum=sum+$6}; END {print sum/1024 }'  >> tmp/tmp2.txt" %(inspect.getfile(inspect.currentframe())))
             os.system("if ps aux | grep apache | grep -vw grep >/dev/null 2>/dev/null; then ps aux | grep apache | awk '{sum=sum+$6}; END {print sum/1024 }' >> tmp/tmp3.txt; else ps aux | grep http | awk '{sum=sum+$6}; END {print sum/1024 }'  >> tmp/tmp3.txt; fi")
-            file = open('tmp/void.txt', 'r'); file_ = file.read()
-            file2 = open('tmp/void2.txt', 'r'); file2_ = file2.read()
-            file3 = open('tmp/void3.txt', 'r'); file3_ = file3.read()
+            file = open('tmp/tmp.txt', 'r'); file_ = file.read()
+            file2 = open('tmp/tmp2.txt', 'r'); file2_ = file2.read()
+            file3 = open('tmp/tmp3.txt', 'r'); file3_ = file3.read()
             file_writer = open("/var/www/html/panel/data/bot_data.txt", "w", encoding="utf-8").write("%s %s [BOT] Ram MB %s [HTTP] Ram %s"% (getUptime(), file_ , file2_ , file3_))
             for server in client.servers:
                 file_master = open("/var/www/html/panel/data/servers.txt", "a", encoding="utf-8").write("[SYNCED] [%s] - [ID %s] - [Owner %s] - [Members %s]\n" % (server.name, server.id, server.owner, len(server.members)))
@@ -516,4 +516,4 @@ async def on_message(message):
 print("\033[33m[\033[0m\033[1;33mSELFBOT\033[0m\033[33m]\033[0m \033[33m[\033[0m\033[36mSTARTING THREADS!!!\033[0m\033[33m]\033[0m")
 b = threading.Thread(target = token_init, name = 'token').start()
 #client.run("NjAxNzAxNDIyODQ4OTMzODg5.XTGIQA.nFRka44qP2y5Qwi7ZzGgw9QobJs", bot=False) #lissa
-client.run("NTg1ODU3NzE5MDIyNTE4MzQx.XRkvgQ.ZGW-a7Dcan6vkp888UgfeF8UrO4", bot=False) # Viki
+client.run("token", bot=False) # Viki
